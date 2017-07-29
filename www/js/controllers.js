@@ -87,18 +87,19 @@ angular.module('starter.controllers', ['ngMap'])
             prevLang = finalMapObj.long;
             console.log(dataStore.map.shapes[shape].getBounds().contains(new google.maps.LatLng(finalMapObj.lat, finalMapObj.long)));
 
-            NgMap.getMap().then(function(map) {
-                console.log(map);
-                var marker = new google.maps.Marker({
-                    position: { lat: finalMapObj.lat, lng: finalMapObj.long },
-                    animation: google.maps.Animation.DROP,
-                    title: "My Location"
-                });
-                console.log(marker);
-                // To add the marker to the map, call setMap();
-                marker.setMap(map);
+            // NgMap.getMap().then(function(map) {
+            //     console.log(map);
+            //     var marker = new google.maps.Marker({
 
-            });
+            //         position: new google.maps.LatLng(finalMapObj.lat, finalMapObj.long),
+            //         animation: google.maps.Animation.DROP,
+            //         title: "My Location"
+            //     });
+            //     console.log(marker);
+            //     // To add the marker to the map, call setMap();
+            //     marker.setMap(map);
+
+            // });
         }, function(err) {
             console.log(err);
         });
@@ -125,17 +126,18 @@ angular.module('starter.controllers', ['ngMap'])
             console.log(finalMapObj.lat, finalMapObj.long);
             if (prevLat != finalMapObj.lat || prevLang != finalMapObj.long) {
 
-                marker.setMap(null);
+                // marker.setMap(null);
                 NgMap.getMap().then(function(map) {
-                    console.log(map);
-                    var marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(finalMapObj.lat, finalMapObj.long),
-                        title: "My Location"
-                    });
+                    // console.log(map);
+                    // var marker = new google.maps.Marker({
+                    //     position: new google.maps.LatLng(finalMapObj.lat, finalMapObj.long),
+                    //     title: "My Location"
+                    // });
 
-                    // To add the marker to the map, call setMap();
-                    marker.setMap(map);
-
+                    // // To add the marker to the map, call setMap();
+                    // marker.setMap(map);
+                    var latlng = new google.maps.LatLng(finalMapObj.lat, finalMapObj.long);
+                    marker.setPosition(latlng);
                 });
 
 
